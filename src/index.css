@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-muted: hsl(var(--sidebar-muted));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: "Inter", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer base {
+  :root {
+    /* Off-white app background, deep navy ink */
+    --background: 210 33% 98%;
+    --foreground: 222 47% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 14%;
+
+    /* Deep navy primary */
+    --primary: 222 56% 22%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Slate surfaces */
+    --secondary: 214 28% 94%;
+    --secondary-foreground: 222 40% 22%;
+
+    --muted: 214 24% 95%;
+    --muted-foreground: 215 16% 42%;
+
+    /* Restrained teal accent */
+    --accent: 188 78% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Green for verified / completed */
+    --success: 158 64% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Amber for warnings */
+    --warning: 36 92% 48%;
+    --warning-foreground: 28 60% 16%;
+
+    /* Red only for serious risk */
+    --destructive: 0 70% 47%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Muted blue for informational */
+    --info: 214 70% 46%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 188 78% 38%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar: deep navy */
+    --sidebar: 222 52% 15%;
+    --sidebar-foreground: 213 31% 82%;
+    --sidebar-accent: 188 70% 44%;
+    --sidebar-muted: 217 25% 62%;
+    --sidebar-border: 220 35% 24%;
+
+    /* Chart palette: navy, teal, slate-blue, amber, green */
+    --chart-1: 222 56% 30%;
+    --chart-2: 188 78% 38%;
+    --chart-3: 214 50% 56%;
+    --chart-4: 36 92% 48%;
+    --chart-5: 158 64% 36%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Tabular numerals for compact, audit-friendly tables */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Thin, restrained scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
