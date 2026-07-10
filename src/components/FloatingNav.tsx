@@ -6,6 +6,7 @@ const LINKS = [
   { label: "AI Maturity", href: "/demo/ai-maturity/" },
   { label: "AI Business Map", href: "/demo/ai-business-roadmap/" },
   { label: "AI Data Governance", href: "/demo/ai-data-governance/" },
+  { label: "TOGAF Navigator", href: "/demo/togaf-navigator/" },
 ];
 
 interface FloatingNavProps {
@@ -38,7 +39,7 @@ export function FloatingNav({ position = "bottom-right" }: FloatingNavProps) {
         aria-label="Toggle navigation"
       >
         <Menu size={15} />
-        <span>More AI</span>
+        <span>More</span>
         {open ? <ChevronDown size={13} /> : <ChevronUp size={13} />}
       </button>
     </div>
